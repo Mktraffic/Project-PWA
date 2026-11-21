@@ -20,6 +20,7 @@ import { ensureAdminSeed, ensureDefaultCategories } from './services/auth.js';
 const app = express();
 const root = path.resolve('client/dist');
 
+app.set('trust proxy', 1);
 app.disable('x-powered-by');
 app.use(compression());
 app.use(helmet({

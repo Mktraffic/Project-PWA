@@ -20,6 +20,7 @@
     "cheerio": "^1.1.2",
     "compression": "^1.8.1",
     "dotenv": "^16.6.1",
+    "esbuild": "^0.25.9",
     "express": "^5.1.0",
     "express-rate-limit": "^8.1.0",
     "helmet": "^8.1.0",
@@ -32,11 +33,10 @@
   "devDependencies": {
     "@playwright/test": "^1.55.0",
     "chrome-launcher": "^1.2.1",
-    "esbuild": "^0.25.9",
     "lighthouse": "^13.6.0"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22.15.0"
   },
   "allowScripts": {
     "bcrypt@6.0.0": true,
