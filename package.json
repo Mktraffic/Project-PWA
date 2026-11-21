@@ -1,0 +1,46 @@
+{
+  "name": "campusalerta",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "setup": "node scripts/ensure-env.mjs",
+    "build": "node scripts/build.mjs",
+    "seed": "node scripts/seed.mjs",
+    "prestart": "npm run setup && npm run build && npm run seed",
+    "start": "node --use-system-ca server/index.js",
+    "dev": "node --use-system-ca server/index.js",
+    "test": "node --test server/test",
+    "perf": "node scripts/lighthouse.mjs",
+    "e2e": "playwright test"
+  },
+  "dependencies": {
+    "@fontsource/tinos": "^5.3.0",
+    "bcrypt": "^6.0.0",
+    "better-sqlite3": "^12.4.1",
+    "cheerio": "^1.1.2",
+    "compression": "^1.8.1",
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "helmet": "^8.1.0",
+    "idb": "^8.0.4",
+    "jsonwebtoken": "^9.0.2",
+    "leaflet": "^1.9.4",
+    "multer": "^2.0.2",
+    "web-push": "^3.6.7"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "chrome-launcher": "^1.2.1",
+    "esbuild": "^0.25.9",
+    "lighthouse": "^13.6.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "allowScripts": {
+    "bcrypt@6.0.0": true,
+    "better-sqlite3@12.11.1": true,
+    "esbuild@0.25.12": true
+  }
+}

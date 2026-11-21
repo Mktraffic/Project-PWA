@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1A1A1A">
+  <meta name="description" content="CampusAlerta: reportes de incidentes y noticias para la comunidad UPTC. Proyecto académico.">
+  <title>CampusAlerta · UPTC</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <!-- Splash: logo oficial (versión positiva) sobre fondo blanco -->
+  <div id="splash" role="status" aria-label="Cargando CampusAlerta">
+    <img src="/img/uptc-color.svg" alt="Universidad Pedagógica y Tecnológica de Colombia" width="320" height="150">
+    <p class="splash-name">CampusAlerta</p>
+  </div>
+
+  <a class="skip" href="#main">Saltar al contenido</a>
+  <header class="app-header" id="app-header">
+    <a class="brand" href="/" aria-label="CampusAlerta, ir al inicio">
+      <!-- Logo oficial en versión negativa (blanca) SOLO sobre fondo negro. Sin modificar. -->
+      <img class="brand-logo" src="/img/uptc-blanco.svg" alt="Universidad Pedagógica y Tecnológica de Colombia" width="120" height="56">
+      <span class="brand-name">CampusAlerta</span>
+    </a>
+    <div class="row">
+      <a id="notif-bell" class="bell-btn" href="/notificaciones" aria-label="Notificaciones" hidden></a>
+      <div id="header-account"></div>
+    </div>
+  </header>
+
+  <div id="connection" role="status" aria-live="polite"></div>
+  <div class="tabbar-bar">
+    <nav class="tabbar" id="tabbar" aria-label="Principal"></nav>
+    <button id="install" class="install-icon" type="button" title="Instalar app" aria-label="Instalar app" data-tip="Instalar app"></button>
+  </div>
+  <main id="main" tabindex="-1"></main>
+
+  <footer class="app-footer">
+    <strong class="legal">Vigilada Mineducación</strong>
+    <span>CampusAlerta es un proyecto académico; no es una aplicación oficial de la UPTC.</span>
+    <a href="/acerca-de">Acerca de</a>
+  </footer>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/assets/app.js"></script>
+</body>
+</html>

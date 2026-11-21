@@ -1,0 +1,10 @@
+export const MAX_PHOTOS = 3;
+export const PHOTO_INPUT_MAX_BYTES = 10 * 1024 * 1024;
+export const PHOTO_MAX_WIDTH = 800;
+export const PHOTO_TARGET_BYTES = 250 * 1024;
+export const PHOTO_MAX_BYTES = 500 * 1024;
+export const PHOTO_SERVER_MAX_BYTES = 600 * 1024;
+export const PHOTOS_TOTAL_MAX_BYTES = 1.5 * 1024 * 1024;
+export const AUDIO_MAX_SECONDS = 120;
+export const AUDIO_MAX_BYTES = 2 * 1024 * 1024;
+export const REQUEST_MAX_BYTES = 4 * 1024 * 1024;

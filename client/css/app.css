@@ -1,0 +1,256 @@
+/* ==========================================================================
+   CampusAlerta · Identidad visual UPTC (Manual de Identidad Gráfica 2022)
+   --------------------------------------------------------------------------
+   COLORES: solo amarillo #FFCC29 (Pantone 123C) y negro #1A1A1A (Pantone Black C),
+   fondo base blanco y tintas (10 %–100 %) de ambos. El amarillo NUNCA es color de texto
+   sobre blanco (contraste ~1.5:1); sobre amarillo, texto #1A1A1A (~11:1).
+   EXCEPCIÓN DOCUMENTADA: --error (#B42318) se usa solo en insignias y mensajes pequeños
+   de validación (contraste 6.5:1 sobre blanco).
+
+   TIPOGRAFÍA: familia institucional "Dutch810 Rm BT" (Roman, Bold, Italic) es comercial.
+   >>> Para usar la fuente oficial con licencia: copiar los archivos .woff2 a client/fonts/
+       (dutch810-roman.woff2, dutch810-bold.woff2, dutch810-italic.woff2) y descomentar el
+       bloque @font-face "Dutch810 Rm BT" de abajo. Mientras tanto se usa la serif de respaldo
+       autoalojada Tinos (licencia Apache 2.0), con la pila: "Dutch810 Rm BT","Tinos",Georgia,serif.
+   Escala (base 16 px, relación 1.25): cuerpo 1rem · secundario .875rem · subtítulo 1.25rem ·
+   título de pantalla 1.5625rem · título principal 1.9375rem · interlineado 1.5.
+   DECISIÓN: el texto de interfaz denso (tablas del panel admin, formularios, chips, botones)
+   usa sans-serif del sistema por legibilidad; las serif se reservan para títulos y marca.
+   ========================================================================== */
+
+/*
+@font-face { font-family: "Dutch810 Rm BT"; font-weight: 400; font-style: normal; src: url("/fonts/dutch810-roman.woff2") format("woff2"); font-display: swap; }
+@font-face { font-family: "Dutch810 Rm BT"; font-weight: 700; font-style: normal; src: url("/fonts/dutch810-bold.woff2") format("woff2"); font-display: swap; }
+@font-face { font-family: "Dutch810 Rm BT"; font-weight: 400; font-style: italic; src: url("/fonts/dutch810-italic.woff2") format("woff2"); font-display: swap; }
+*/
+@font-face { font-family: "Tinos"; font-weight: 400; font-style: normal; src: url("/fonts/tinos-latin-400-normal.woff2") format("woff2"); font-display: swap; }
+@font-face { font-family: "Tinos"; font-weight: 700; font-style: normal; src: url("/fonts/tinos-latin-700-normal.woff2") format("woff2"); font-display: swap; }
+@font-face { font-family: "Tinos"; font-weight: 400; font-style: italic; src: url("/fonts/tinos-latin-400-italic.woff2") format("woff2"); font-display: swap; }
+@font-face { font-family: "Tinos"; font-weight: 700; font-style: italic; src: url("/fonts/tinos-latin-700-italic.woff2") format("woff2"); font-display: swap; }
+
+:root {
+  --uptc-amarillo: #FFCC29;
+  --uptc-negro: #1A1A1A;
+  --blanco: #FFFFFF;
+  /* Tintas de amarillo */
+  --amarillo-10: #FFFAEA;
+  --amarillo-20: #FFF5D4;
+  --amarillo-40: #FFEBA9;
+  --amarillo-60: #FFE07E;
+  /* Tintas de negro */
+  --negro-10: #E8E8E8;
+  --negro-20: #D1D1D1;
+  --negro-40: #A3A3A3;
+  --negro-70: #5F5F5F;   /* texto secundario: 6.4:1 sobre blanco */
+  --negro-80: #484848;
+  --negro-95: #0D0D0D;
+  /* Excepción funcional (solo insignias y mensajes pequeños de error) */
+  --error: #B42318;
+  --error-fondo: #FEF3F2;
+
+  --font-serif: "Dutch810 Rm BT", "Tinos", Georgia, serif;
+  --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --fs-sec: .875rem;
+  --fs-body: 1rem;
+  --fs-sub: 1.25rem;
+  --fs-title: 1.5625rem;
+  --fs-hero: 1.9375rem;
+
+  --radius: .5rem;
+  --tabbar-h: 3.5rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 100%; -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--blanco); color: var(--uptc-negro);
+  font-family: var(--font-serif); font-size: var(--fs-body); line-height: 1.5;
+  min-height: 100vh; display: flex; flex-direction: column;
+}
+h1, h2, h3, .brand-name { font-family: var(--font-serif); line-height: 1.25; margin: 0 0 .5rem; }
+h1 { font-size: var(--fs-hero); }
+h2 { font-size: var(--fs-title); }
+h3 { font-size: var(--fs-sub); }
+p { margin: 0 0 .75rem; }
+a { color: var(--uptc-negro); text-decoration: underline; text-decoration-color: var(--uptc-amarillo); text-decoration-thickness: .15em; text-underline-offset: .15em; }
+a:hover { background: var(--amarillo-40); }
+img { max-width: 100%; }
+.muted { color: var(--negro-70); }
+.small { font-size: var(--fs-sec); }
+.ui, button, input, select, textarea, label, .chip, .badge, table, .tabbar, .btn { font-family: var(--font-ui); }
+:focus-visible { outline: 3px solid var(--uptc-negro); outline-offset: 2px; box-shadow: 0 0 0 5px var(--uptc-amarillo); }
+.skip { position: absolute; left: -999px; top: 0; background: var(--uptc-amarillo); color: var(--uptc-negro); padding: .5rem 1rem; z-index: 100; font-family: var(--font-ui); }
+.skip:focus { left: 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- Splash ---------- */
+#splash { position: fixed; inset: 0; z-index: 200; background: var(--blanco); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; transition: opacity .3s; }
+#splash img { width: min(70vw, 320px); height: auto; padding: 1rem; /* área de seguridad */ }
+#splash.hide { opacity: 0; pointer-events: none; }
+.splash-name { font-family: var(--font-serif); font-size: var(--fs-title); font-weight: 700; margin: 0; }
+
+/* ---------- Encabezado (negro) ---------- */
+.app-header {
+  background: var(--uptc-negro); color: var(--blanco); border-bottom: 4px solid var(--uptc-amarillo);
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: .5rem max(1rem, env(safe-area-inset-right)) .5rem max(1rem, env(safe-area-inset-left));
+  position: sticky; top: 0; z-index: 30;
+}
+.brand { display: flex; align-items: center; gap: .9rem; text-decoration: none; color: var(--blanco); }
+.brand:hover { background: transparent; }
+/* Área de seguridad del logo: margen mínimo equivalente al alto de la "U" alrededor del logosímbolo */
+.brand-logo { height: 2.75rem; width: auto; padding: .15rem; }
+.brand-name { font-size: var(--fs-sub); font-weight: 700; color: var(--uptc-amarillo); margin: 0; padding-left: .9rem; border-left: 2px solid var(--negro-80); white-space: nowrap; }
+
+/* ---------- Barra de pestañas (negra, pestaña activa amarilla) ---------- */
+.tabbar { background: var(--uptc-negro); display: flex; justify-content: center; gap: .25rem; padding: 0 .5rem; z-index: 20; }
+.tabbar a { color: var(--blanco); text-decoration: none; padding: .75rem 1rem; font-size: var(--fs-sec); font-weight: 600; display: flex; align-items: center; gap: .4rem; border-bottom: 4px solid transparent; min-height: 48px; }
+.tabbar a:hover { background: var(--negro-80); }
+.tabbar a[aria-current="page"] { background: var(--uptc-amarillo); color: var(--uptc-negro); }
+.tabbar .ico { font-size: 1.1rem; line-height: 1; }
+
+/* ---------- Banner de conexión ---------- */
+#connection { font-family: var(--font-ui); font-size: var(--fs-sec); text-align: center; font-weight: 600; }
+#connection.offline { background: var(--uptc-negro); color: var(--uptc-amarillo); padding: .5rem 1rem; border-bottom: 2px solid var(--uptc-amarillo); }
+#connection.online-back { background: var(--amarillo-40); color: var(--uptc-negro); padding: .5rem 1rem; }
+
+main { flex: 1; width: 100%; max-width: 72rem; margin: 0 auto; padding: 1.25rem 1rem 2rem; }
+main:focus, main:focus-visible { outline: none; box-shadow: none; }
+
+/* ---------- Pie ---------- */
+.app-footer { background: var(--uptc-negro); color: var(--blanco); border-top: 4px solid var(--uptc-amarillo); padding: 1rem; font-family: var(--font-ui); font-size: var(--fs-sec); display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: center; align-items: center; text-align: center; }
+.app-footer a { color: var(--uptc-amarillo); background: transparent; }
+.app-footer a:hover { background: var(--negro-80); }
+.legal { font-family: var(--font-serif); font-size: var(--fs-body); letter-spacing: .02em; }
+
+/* ---------- Componentes ---------- */
+.card { background: var(--blanco); border: 1px solid var(--negro-20); border-radius: var(--radius); padding: 1rem; margin-bottom: 1rem; }
+.card-accent { border-top: 6px solid var(--uptc-amarillo); }
+.btn, button.btn { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; background: var(--uptc-amarillo); color: var(--uptc-negro); border: 2px solid var(--uptc-negro); border-radius: var(--radius); padding: .6rem 1.1rem; min-height: 44px; font-size: var(--fs-body); font-weight: 700; cursor: pointer; text-decoration: none; }
+.btn:hover { background: var(--amarillo-60); }
+.btn:disabled, .btn[aria-disabled="true"] { background: var(--negro-10); color: var(--negro-70); border-color: var(--negro-20); cursor: not-allowed; }
+.btn-dark { background: var(--uptc-negro); color: var(--blanco); }
+.btn-dark:hover { background: var(--negro-80); }
+.btn-ghost { background: var(--blanco); }
+.btn-sm { min-height: 36px; padding: .3rem .8rem; font-size: var(--fs-sec); }
+.btn-block { width: 100%; }
+.row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+.spread { justify-content: space-between; }
+.stack > * + * { margin-top: .75rem; }
+
+.chip { display: inline-flex; align-items: center; gap: .3rem; background: var(--blanco); color: var(--uptc-negro); border: 2px solid var(--negro-20); border-radius: 999px; padding: .25rem .8rem; min-height: 36px; font-size: var(--fs-sec); font-weight: 600; cursor: pointer; }
+.chip[aria-pressed="true"], .chip.active { background: var(--uptc-amarillo); border-color: var(--uptc-negro); }
+
+/* Insignias: icono + etiqueta + tinta (no solo color) */
+.badge { display: inline-flex; align-items: center; gap: .3rem; font-size: .8125rem; font-weight: 700; padding: .15rem .6rem; border-radius: 4px; border: 1px solid var(--uptc-negro); background: var(--negro-10); color: var(--uptc-negro); }
+.badge-amarillo { background: var(--amarillo-40); }
+.badge-negro { background: var(--uptc-negro); color: var(--uptc-amarillo); }
+.badge-outline { background: var(--blanco); }
+.badge-error { background: var(--error-fondo); color: var(--error); border-color: var(--error); }
+.urgent { border-left: 8px solid var(--uptc-negro); background: var(--amarillo-20); }
+
+/* Formularios */
+.field { display: block; margin-bottom: .5rem; }
+.field > span.label { display: block; font-weight: 700; font-size: var(--fs-sec); margin-bottom: .25rem; }
+.field input, .field select, .field textarea { width: 100%; padding: .65rem .75rem; min-height: 44px; font-size: var(--fs-body); border: 2px solid var(--negro-40); border-radius: var(--radius); background: var(--blanco); color: var(--uptc-negro); }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--uptc-negro); }
+.field.invalid input, .field.invalid select, .field.invalid textarea { border-color: var(--error); }
+.field-error { display: block; min-height: 1.1rem; font-size: var(--fs-sec); font-weight: 600; color: var(--error); margin-top: .2rem; }
+.hint { font-size: var(--fs-sec); color: var(--negro-70); margin-top: .2rem; }
+.pw-rules { list-style: none; padding: 0; margin: .25rem 0 0; font-family: var(--font-ui); font-size: .8125rem; display: flex; flex-wrap: wrap; gap: .25rem .75rem; }
+.pw-rules li::before { content: "○ "; }
+.pw-rules li.ok::before { content: "● "; }
+.pw-rules li.ok { font-weight: 700; }
+
+/* ---------- Autenticación ---------- */
+.auth-wrap { max-width: 30rem; margin: 0 auto; }
+.auth-logo { display: block; margin: 0 auto .5rem; width: min(100%, 22rem); height: auto; padding: .75rem; /* área de seguridad */ }
+.auth-title { text-align: center; }
+.auth-title .brand-word { font-family: var(--font-serif); font-weight: 700; }
+.seg { display: grid; grid-template-columns: 1fr 1fr; border: 2px solid var(--uptc-negro); border-radius: var(--radius); overflow: hidden; margin-bottom: 1rem; }
+.seg button { font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-body); padding: .65rem; min-height: 44px; border: 0; background: var(--blanco); color: var(--uptc-negro); cursor: pointer; }
+.seg button[aria-selected="true"] { background: var(--uptc-amarillo); }
+.demo-box { font-family: var(--font-ui); font-size: var(--fs-sec); background: var(--amarillo-10); border: 1px dashed var(--uptc-negro); border-radius: var(--radius); padding: .6rem .8rem; margin-top: 1rem; }
+
+/* ---------- Inicio ---------- */
+.page-head { margin-bottom: 1rem; }
+.section-switch { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin-bottom: 1rem; }
+.section-switch button { font-family: var(--font-ui); font-weight: 700; font-size: var(--fs-sec); display: flex; flex-direction: column; align-items: center; gap: .15rem; padding: .6rem .25rem; min-height: 56px; border: 2px solid var(--uptc-negro); border-radius: var(--radius); background: var(--blanco); color: var(--uptc-negro); cursor: pointer; }
+.section-switch button[aria-selected="true"] { background: var(--uptc-negro); color: var(--uptc-amarillo); }
+.section-switch .ico { font-size: 1.25rem; }
+.empty { text-align: center; padding: 2rem 1rem; border: 2px dashed var(--negro-20); border-radius: var(--radius); color: var(--negro-70); font-family: var(--font-ui); }
+.notice { font-family: var(--font-ui); font-size: var(--fs-sec); background: var(--amarillo-20); border: 1px solid var(--uptc-negro); border-radius: var(--radius); padding: .5rem .8rem; margin-bottom: 1rem; }
+.profile-grid { display: grid; grid-template-columns: max-content 1fr; gap: .4rem 1rem; font-family: var(--font-ui); }
+.profile-grid dt { font-weight: 700; }
+.profile-grid dd { margin: 0; }
+
+#toast { position: fixed; left: 50%; bottom: calc(1rem + env(safe-area-inset-bottom)); transform: translate(-50%, 150%); background: var(--uptc-negro); color: var(--blanco); border-left: 6px solid var(--uptc-amarillo); padding: .7rem 1rem; border-radius: var(--radius); font-family: var(--font-ui); font-size: var(--fs-sec); max-width: min(92vw, 28rem); z-index: 150; transition: transform .25s; }
+#toast.show { transform: translate(-50%, 0); }
+
+.offline-main { display: grid; place-items: center; }
+.offline-card { max-width: 30rem; text-align: center; border-top: 6px solid var(--uptc-amarillo); }
+
+/* ---------- Responsive: móvil primero ---------- */
+@media (max-width: 47.99rem) {
+  .brand-logo { height: 2.25rem; }
+  .brand-name { font-size: 1.05rem; padding-left: .6rem; }
+  /* Barra de pestañas inferior en móvil */
+  .tabbar { position: fixed; top: auto; bottom: 0; left: 0; right: 0; justify-content: space-around; padding: 0 0 env(safe-area-inset-bottom); border-top: 3px solid var(--uptc-amarillo); z-index: 40; }
+  .tabbar a { flex: 1; flex-direction: column; justify-content: center; gap: .1rem; padding: .35rem .25rem; font-size: .75rem; min-height: var(--tabbar-h); border-bottom: 0; }
+  body { padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom)); }
+}
+@media (min-width: 48rem) {
+  main { padding: 1.5rem 1.5rem 3rem; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+.ico { display: inline-flex; line-height: 0; }
+@media (max-width: 47.99rem) { #toast { bottom: calc(var(--tabbar-h) + 1rem + env(safe-area-inset-bottom)); } }
+
+/* ---------- Evidencias, visor y grabadora ---------- */
+.thumbs { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .5rem; }
+.thumb { position: relative; margin: 0; width: 88px; height: 88px; border-radius: var(--radius); overflow: hidden; border: 2px solid var(--uptc-negro); }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.thumb-remove { position: absolute; top: 2px; right: 2px; width: 26px; height: 26px; border-radius: 50%; border: 0; background: var(--uptc-negro); color: var(--uptc-amarillo); display: grid; place-items: center; cursor: pointer; padding: 0; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: .5rem; margin-top: .5rem; }
+.gallery-item { padding: 0; border: 2px solid var(--uptc-negro); border-radius: var(--radius); overflow: hidden; background: var(--negro-10); cursor: pointer; aspect-ratio: 1 / 1; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.lightbox { border: 3px solid var(--uptc-amarillo); border-radius: var(--radius); background: var(--uptc-negro); color: var(--blanco); padding: .75rem; max-width: min(94vw, 54rem); width: 100%; }
+.lightbox::backdrop { background: rgba(26, 26, 26, .82); }
+.lightbox-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: .5rem; }
+.lightbox-body { display: grid; place-items: center; }
+.lightbox-body img { max-height: 75vh; max-width: 100%; object-fit: contain; border-radius: 4px; }
+
+/* ---------- Preferencias (switch y checkboxes) ---------- */
+.switch { appearance: none; -webkit-appearance: none; width: 52px; height: 30px; border-radius: 999px; background: var(--negro-20); border: 2px solid var(--uptc-negro); position: relative; cursor: pointer; transition: background .2s; flex-shrink: 0; }
+.switch::after { content: ""; position: absolute; top: 2px; left: 2px; width: 22px; height: 22px; border-radius: 50%; background: var(--uptc-negro); transition: transform .2s; }
+.switch:checked { background: var(--uptc-amarillo); }
+.switch:checked::after { transform: translateX(22px); }
+.check-row { display: flex; align-items: center; gap: .6rem; padding: .5rem .75rem; border: 1px solid var(--negro-20); border-radius: var(--radius); cursor: pointer; font-family: var(--font-ui); min-height: 44px; }
+.check-row input { width: 20px; height: 20px; accent-color: var(--uptc-negro); }
+
+/* ---------- Leaflet restilizado con identidad UPTC ---------- */
+.map-pin span { display: block; width: 24px; height: 24px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: var(--uptc-amarillo); border: 3px solid var(--uptc-negro); box-shadow: 0 2px 6px rgba(0,0,0,.35); }
+.map-pin span::after { content: ""; display: block; width: 8px; height: 8px; border-radius: 50%; background: var(--uptc-negro); margin: 5px; }
+.leaflet-control-zoom a { background: var(--uptc-negro) !important; color: var(--uptc-amarillo) !important; border-color: var(--uptc-amarillo) !important; }
+.leaflet-control-zoom a:hover { background: var(--uptc-amarillo) !important; color: var(--uptc-negro) !important; }
+
+/* ---------- Campanita de notificaciones en la barra superior ---------- */
+.bell-btn { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: var(--radius); border: 2px solid var(--uptc-amarillo); background: var(--uptc-negro); color: var(--uptc-amarillo); text-decoration: none; }
+.bell-btn svg { width: 18px; height: 18px; }
+.bell-btn:hover { background: var(--uptc-amarillo); color: var(--uptc-negro); }
+.bell-count { position: absolute; top: -6px; right: -6px; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 999px; background: var(--uptc-amarillo); color: var(--uptc-negro); border: 2px solid var(--uptc-negro); font-family: var(--font-ui); font-size: .72rem; font-weight: 800; display: grid; place-items: center; line-height: 1; }
+
+/* ---------- Barra de secciones + botón descarga (Instalar app) a la derecha ---------- */
+.tabbar-bar { background: var(--uptc-negro); position: relative; z-index: 20; display: flex; align-items: center; justify-content: center; }
+.tabbar-bar .tabbar { position: static; flex: 1; }
+.install-icon { position: absolute; right: .75rem; top: 50%; transform: translateY(-50%); z-index: 25; width: 40px; height: 40px; border-radius: var(--radius); border: 2px solid var(--uptc-amarillo); background: var(--uptc-negro); color: var(--uptc-amarillo); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; }
+.install-icon[hidden] { display: none; }
+.install-icon:hover, .install-icon:focus-visible { background: var(--uptc-amarillo); color: var(--uptc-negro); }
+.install-icon[data-tip]:hover::after, .install-icon[data-tip]:focus-visible::after { content: attr(data-tip); position: absolute; right: 0; top: calc(100% + 6px); background: var(--uptc-negro); color: var(--uptc-amarillo); border: 1px solid var(--uptc-amarillo); padding: .25rem .55rem; border-radius: 4px; font-family: var(--font-ui); font-size: .75rem; font-weight: 700; white-space: nowrap; z-index: 60; pointer-events: none; }
+@media (max-width: 47.99rem) {
+  .tabbar-bar { position: fixed; top: auto; bottom: 0; left: 0; right: 0; border-top: 3px solid var(--uptc-amarillo); z-index: 40; padding: 0 .4rem env(safe-area-inset-bottom) 0; }
+  .tabbar-bar .tabbar { position: static; border-top: 0; padding: 0; }
+  .install-icon { position: static; transform: none; margin-left: .25rem; flex-shrink: 0; }
+  .install-icon[data-tip]:hover::after, .install-icon[data-tip]:focus-visible::after { top: auto; bottom: calc(100% + 6px); }
+}

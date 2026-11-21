@@ -1,0 +1,7 @@
+node_modules/
+.env
+client/dist/
+server/db/data/
+server/uploads/
+docs/evidencias/lighthouse/*
+!docs/evidencias/lighthouse/.gitkeep
