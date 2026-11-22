@@ -18,7 +18,14 @@ export class ScrapeError extends Error {
 }
 
 let fetcher = async (url) => {
-  const res = await fetch(url, { headers: { 'User-Agent': UA, Accept: 'text/html' }, signal: AbortSignal.timeout(15000) });
+  const res = await fetch(url, {
+    headers: {
+      'User-Agent': UA,
+      Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+      'Accept-Language': 'es-CO,es;q=0.9,en;q=0.8'
+    },
+    signal: AbortSignal.timeout(25000)
+  });
   if (!res.ok) throw new ScrapeError(`El sitio de la UPTC respondió con el estado ${res.status}.`);
   return res.text();
 };
@@ -99,8 +106,9 @@ export async function fetchUptcNews(limit = 5) {
     } catch (error) {
       if (all) return { items: all.data.slice(0, n), cached: true, aviso: 'No se pudo actualizar desde la UPTC; se muestran datos en caché.' };
       if (error instanceof ScrapeError) throw error;
-      console.warn('Scraper UPTC error:', error.cause?.code || error.cause?.message || error.message);
-      throw new ScrapeError('No se pudo consultar el sitio de la UPTC. Verifica tu conexión e inténtalo de nuevo.', 502);
+      const reason = error.cause?.code || error.cause?.message || error.message;
+      console.warn('Scraper UPTC error:', reason);
+      throw new ScrapeError(`No se pudo consultar el sitio de la UPTC (${reason}). Verifica tu conexión e inténtalo de nuevo.`, 502);
     }
   }
   return { items: all.data.slice(0, n), cached: Boolean(fresh) };
