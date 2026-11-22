@@ -6,6 +6,7 @@
 //   detalle:  .detail-content .text.body p   (contenido completo)
 import * as cheerio from 'cheerio';
 import { config } from '../config.js';
+import { uptcGet } from './uptcFetch.js';
 
 export const SOURCE_URL = 'https://www.uptc.edu.co/sitio/portal/cal_not_eve/cal_not/index.html';
 const ORIGIN = 'https://www.uptc.edu.co';
@@ -18,13 +19,13 @@ export class ScrapeError extends Error {
 }
 
 let fetcher = async (url) => {
-  const res = await fetch(url, {
+  const res = await uptcGet(url, {
     headers: {
       'User-Agent': UA,
       Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
       'Accept-Language': 'es-CO,es;q=0.9,en;q=0.8'
     },
-    signal: AbortSignal.timeout(25000)
+    timeoutMs: 25000
   });
   if (!res.ok) throw new ScrapeError(`El sitio de la UPTC respondió con el estado ${res.status}.`);
   return res.text();

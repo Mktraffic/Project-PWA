@@ -7,8 +7,8 @@
     "build": "node scripts/build.mjs",
     "seed": "node scripts/seed.mjs",
     "prestart": "npm run setup && npm run build && npm run seed",
-    "start": "node --use-system-ca server/index.js",
-    "dev": "node --use-system-ca server/index.js",
+    "start": "node server/index.js",
+    "dev": "node server/index.js",
     "test": "node --test server/test",
     "perf": "node scripts/lighthouse.mjs",
     "e2e": "playwright test"

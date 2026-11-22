@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import db from '../db/sqlite.js';
 import { fetchArticleContent, isAllowedUrl } from '../services/scraper.js';
+import { uptcGet } from '../services/uptcFetch.js';
 
 export function serializeNews(row) {
   const categorias = db.prepare('SELECT c.id, c.nombre FROM categories c JOIN news_categories nc ON nc.categoryId = c.id WHERE nc.newsId = ? ORDER BY c.nombre').all(row.id);
@@ -9,20 +10,19 @@ export function serializeNews(row) {
 
 const router = Router();
 
-// Proxy seguro de imágenes oficiales UPTC (evita bloqueo por Referer/hotlink y usa --use-system-ca).
+// Proxy seguro de imágenes oficiales UPTC (evita bloqueo por Referer/hotlink y usa el CA intermedio).
 router.get('/image', async (req, res) => {
   const url = String(req.query.url ?? '').trim();
   if (!isAllowedUrl(url)) return res.status(400).end();
   try {
-    const upstream = await fetch(url, {
+    const upstream = await uptcGet(url, {
       headers: { 'User-Agent': 'Mozilla/5.0 (compatible; CampusAlerta-proyecto-academico)', Referer: 'https://www.uptc.edu.co/' },
-      signal: AbortSignal.timeout(10000)
+      timeoutMs: 15000
     });
-    const type = upstream.headers.get('content-type') || '';
+    const type = String(upstream.headers['content-type'] || '');
     if (!upstream.ok || !type.startsWith('image/')) return res.status(502).end();
-    const buf = Buffer.from(await upstream.arrayBuffer());
     res.set({ 'Content-Type': type, 'Cache-Control': 'public, max-age=86400', 'X-Content-Type-Options': 'nosniff' });
-    res.send(buf);
+    res.send(upstream.buffer);
   } catch {
     res.status(502).end();
   }
